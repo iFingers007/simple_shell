@@ -94,9 +94,6 @@ int create_process(char *cmd[], char *line)
 	else
 	{
 		wait(&status);
-		_free(line);
-		free_cmds(cmd);
-		exit(EXIT_SUCCESS);
 	}
 	return 0;
 }
