@@ -2,8 +2,8 @@
 
 /**
  * getInput - gets input from standard in
- *
- *return: String gotten
+ * @nchar: Length of the input
+ * Return: Always returns string gotten
  */
 
 char *getInput(ssize_t *nchar)
@@ -24,9 +24,8 @@ char *getInput(ssize_t *nchar)
 
 /**
  * processToken - Print each character of a token.
- * @token: The token to be processed and printed.
- *
- *return: Array of token string
+ * @line: The input line to be processed.
+ * Return: Array of token string
 */
 
 char **processToken(char *line)
@@ -43,28 +42,27 @@ char **processToken(char *line)
 	token = strtok(line, " \n");
 	while (token != NULL)
 	{
-		 cmd[i] = malloc(sizeof(char) * _strlen(token) + 1);
-		 if (cmd[i] == NULL)
-		 {
-			 perror("malloc:");
-			 free_cmds(cmd);
-			 exit(EXIT_FAILURE);
-		 }
+		cmd[i] = malloc(sizeof(char) * _strlen(token) + 1);
+		if (cmd[i] == NULL)
+		{
+			perror("malloc:");
+			free_cmds(cmd);
+			exit(EXIT_FAILURE);
+		}
 
-		 _strcpy(cmd[i], token);
+		_strcpy(cmd[i], token);
+		token = strtok(NULL, " \n");
+		i++;
+	}
 
-		 token = strtok(NULL, " \n");
-		 i++;
-	 }
-
-	 cmd[i] = NULL;
-/*	 _free(lineCopy); */
-	 return (cmd);
+	cmd[i] = NULL;
+/**	_free(lineCopy); **/
+	return (cmd);
 }
 
 /**
- * create_process - this creates a child process for the command
- * to run
+ * create_process - this creates a child process to run
+ * @line: The input line to be processed.
  * @cmd: an array holding each command and passed arguments
  * Return: returns 0 for success and 1 for failure
  */
@@ -95,7 +93,7 @@ int create_process(char *cmd[], char *line)
 	{
 		wait(&status);
 	}
-	return 0;
+	return (0);
 }
 
 /**

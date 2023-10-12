@@ -23,10 +23,10 @@ void free_cmds(char **cmd)
 }
 
 /**
- * free_cmd - free allocated memorie
- *@cmd: Argument passed
+ * _free - Free allocated memory.
+ * @cmd: Argument passed
  *
- *Return: Void
+ * Return: Void
  */
 
 void _free(char *cmd)
@@ -34,15 +34,14 @@ void _free(char *cmd)
 	if (cmd == NULL)
 		return;
 	free(cmd);
-	return;
 }
 
 /**
  * chckDmalloc - Checks for double malloc errors
- *@cmd: Argument passed
- *@pMcd: Parent malloc
+ * @cmd: Argument passed
+ * @pCmd: Parent malloc
  *
- *Return: Null or pointer to address
+ * Return: Null or pointer to address
  */
 
 char *chckDmalloc(char *cmd, char **pCmd)
