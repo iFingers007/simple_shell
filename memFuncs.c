@@ -2,72 +2,89 @@
 
 /**
  * free_cmds - frees allocated memories
- *@cmd: Arguments passed
+ *@cm: Arguments passed
  *
  *Return: Void
  */
 
-void free_cmds(char **cmd)
+void free_cmds(char **cm)
 {
 	int i = 0;
 
-	if (cmd == NULL)
+	if (cm == NULL)
 		return;
-	for (i = 0; cmd[i]; i++)
+	for (i = 0; cm[i]; i++)
 	{
-		if (cmd[i] != NULL)
-			free(cmd[i]);
+		if (cm[i] != NULL)
+		{
+			_free(cm[i]);
+			cm[i] = NULL;
+		}
 	}
-	if (cmd != NULL)
-		free(cmd);
+	free(cm);
 }
 
 /**
  * _free - Free allocated memory.
- * @cmd: Argument passed
+ * @cm: Argument passed
  *
  * Return: Void
  */
 
-void _free(char *cmd)
+void _free(char *cm)
 {
-	if (cmd == NULL)
+	if (cm == NULL)
 		return;
-	free(cmd);
+	free(cm);
+	cm = NULL;
 }
 
 /**
  * chckDmalloc - Checks for double malloc errors
- * @cmd: Argument passed
+ * @cm: Argument passed
  * @pCmd: Parent malloc
  *
  * Return: Null or pointer to address
  */
 
-char *chckDmalloc(char *cmd, char **pCmd)
+char *chckDmalloc(char *cm, char **pCmd)
 {
-	if (cmd == NULL)
+	if (cm == NULL)
 	{
 		perror("malloc:");
 		free(pCmd);
 		return (NULL);
 	}
-	return (cmd);
+	return (cm);
 }
 
 /**
  * chckSmalloc - Checks for single malloc errors
- *@cmd: Argument passed
+ *@cm: Argument passed
  *
  *Return: Null or pointer address
  */
 
-char *chckSmalloc(char *cmd)
+char *chckSmalloc(char *cm)
 {
-	if (cmd == NULL)
+	if (cm == NULL)
 	{
 		perror("malloc:");
 		return (NULL);
 	}
-	return (cmd);
+	return (cm);
+}
+
+/**
+ * chckSmalloc - Checks for single malloc errors
+ *@cm: Argument passed
+ *
+ *Return: Null or pointer address
+ */
+
+void chck(char *lineptr, char *msg)
+{
+	_free(lineptr);
+	perror(msg);
+	exit(EXIT_FAILURE);
 }
