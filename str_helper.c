@@ -31,9 +31,9 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 
 /**
  * _strcpy - Copies a string
- * @dest: Destination string
- * @src: Source string
- * Return: destination string or null
+ *@dest: Destination string
+ *@src: Source string
+ *Return: destination string or null
  */
 
 char *_strcpy(char *dest, char *src)
@@ -66,11 +66,58 @@ size_t _strlen(const char *str)
 {
 	size_t count = 0;
 
-
 	if (str == NULL)
 		return (0);
 	while (str[count])
 		count++;
 
 	return (count);
+}
+
+/**
+ * _strdup - Duplicates a string
+ * @str: the string to return its length
+ * Return: returns the copy of the string or NULL
+ */
+char *_strdup(char *str)
+{
+	size_t len = _strlen(str);
+	char *copy;
+
+	if (str == NULL)
+		return (NULL);
+	copy = malloc((len + 1) * sizeof(str));
+	if (copy == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+	_strcpy(copy, str);
+	return (copy);
+}
+/**
+ * _strcat - Concatenates a string
+ *@dest: Destination string
+ *@src: Source string
+ *Return: destination string or null
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	char *p;
+
+	if (dest == NULL || src == NULL)
+	{
+		perror("Invalid input");
+		exit(EXIT_FAILURE);
+	}
+	p = dest;
+	while (*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
+	*dest = '\0';
+	return (p);
 }

@@ -21,13 +21,25 @@ extern char **environ;
 int _putchar(char c);
 int create_process(char *cmd[], char *);
 char **processToken(char *line);
+char *location(char *cmd);
+char *_getenv(char *name);
+
 void print_message(const char *message);
 void print_number(int num);
+
+void _free(char *cmd);
 void free_cmds(char **cmd);
+
+/*String helper functions*/
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcpy(char *dest, char *src);
 size_t _strlen(const char *str);
-char *getInput(ssize_t *nchar);
-void _free(char *cmd);
+char *_strdup(char *str);
+char *_strcat(char *dest, char *src);
+char *_strncpy(char *dest, char *src, int n);
+
+char *getInput();
+int execute(char **args);
+void sighandler(int signum);
 
 #endif

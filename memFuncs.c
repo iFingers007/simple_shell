@@ -16,10 +16,12 @@ void free_cmds(char **cmd)
 	for (i = 0; cmd[i]; i++)
 	{
 		if (cmd[i] != NULL)
-			free(cmd[i]);
+		{
+			_free(cmd[i]);
+			cmd[i] = NULL;
+		}
 	}
-	if (cmd != NULL)
-		free(cmd);
+	free(cmd);
 }
 
 /**
@@ -34,6 +36,7 @@ void _free(char *cmd)
 	if (cmd == NULL)
 		return;
 	free(cmd);
+	cmd = NULL;
 }
 
 /**

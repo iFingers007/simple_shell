@@ -1,28 +1,6 @@
 #include "main.h"
 
 /**
- * getInput - gets input from standard in
- * @nchar: Length of the input
- * Return: Always returns string gotten
- */
-
-char *getInput(ssize_t *nchar)
-{
-	char *line = NULL;
-	size_t size = 0;
-
-	*nchar = getline(&line, &size, stdin);
-	if (*nchar  == -1)
-	{
-		write(2, "\n", 1);
-		_free(line);
-		exit(EXIT_FAILURE);
-	}
-	else
-		return (line);
-}
-
-/**
  * processToken - Print each character of a token.
  * @line: The input line to be processed.
  * Return: Array of token string
@@ -56,7 +34,6 @@ char **processToken(char *line)
 	}
 
 	cmd[i] = NULL;
-/**	_free(lineCopy); **/
 	return (cmd);
 }
 
@@ -83,7 +60,6 @@ int create_process(char *cmd[], char *line)
 	{
 		if (execve(cmd[0], cmd, environ) == -1)
 		{
-			perror("./shell");
 			free(line);
 			free_cmds(cmd);
 			exit(EXIT_FAILURE);
@@ -94,19 +70,4 @@ int create_process(char *cmd[], char *line)
 		wait(&status);
 	}
 	return (0);
-}
-
-/**
- * print_message - Prints a message to standard output
- * @message: The message to be printed
- */
-void print_message(const char *message)
-{
-	int i = 0;
-
-	while (message[i] != '\0')
-	{
-		i++;
-	}
-	write(1, message, i);
 }
