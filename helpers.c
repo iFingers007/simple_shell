@@ -60,7 +60,6 @@ int create_process(char *cmd[], char *line)
 	{
 		if (execve(cmd[0], cmd, environ) == -1)
 		{
-			perror("./shell");
 			free(line);
 			free_cmds(cmd);
 			exit(EXIT_FAILURE);
