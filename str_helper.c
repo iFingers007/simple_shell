@@ -19,19 +19,19 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	while (n--)
 	{
 		if (*s1 != *s2)
-			return (*(unsigned char *)s1) - (*(unsigned char *)s2);
+			return ((*(unsigned char *)s1) - (*(unsigned char *)s2));
 		if (*s1 == '\0')
-			return 0;
+			return (0);
 
 		s1++;
 		s2++;
 	}
-	return 0;
+	return (0);
 }
 
 /**
  * _strcpy - Copies a string
- *@sdest: Destination string
+ *@dest: Destination string
  *@src: Source string
  *Return: destination string or null
  */
@@ -97,7 +97,7 @@ char *_strdup(char *str)
 }
 /**
  * _strcat - Concatenates a string
- *@sdest: Destination string
+ *@dest: Destination string
  *@src: Source string
  *Return: destination string or null
  */
@@ -105,6 +105,7 @@ char *_strdup(char *str)
 char *_strcat(char *dest, char *src)
 {
 	char *p;
+
 	if (dest == NULL || src == NULL)
 	{
 		perror("Invalid input");

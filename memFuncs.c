@@ -76,10 +76,11 @@ char *chckSmalloc(char *cm)
 }
 
 /**
- * chckSmalloc - Checks for single malloc errors
- *@cm: Argument passed
+ * chck - Checks for single malloc errors
+ *@lineptr: Argument passed
+ *@msg: Error message
  *
- *Return: Null or pointer address
+ *Return: Void
  */
 
 void chck(char *lineptr, char *msg)
