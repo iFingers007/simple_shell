@@ -17,7 +17,7 @@ char **processToken(char *line)
 		_free(line);
 		return (NULL);
 	}
-	token = strtok(line, " \n");
+	token = strtok(line, " \n\t");
 	while (token != NULL)
 	{
 		cmd[i] = malloc(sizeof(char) * _strlen(token) + 1);
