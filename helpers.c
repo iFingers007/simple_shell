@@ -40,7 +40,7 @@ char **processToken(char *line)
 /**
  * create_process - this creates a child process to run
  * @line: The input line to be processed.
- * @cmd: an array holding each command and passed arguments
+ * @cm: an array holding each command and passed arguments
  * Return: returns 0 for success and 1 for failure
  */
 int create_process(char *cm[], char *line)
