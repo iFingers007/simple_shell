@@ -3,8 +3,9 @@
 char *lineptr = NULL;
 char **cmd = NULL;
 
+
 /**
- * cleanup - Cleansup the code
+ * cleanup - Cleans up the program
  *
  * Return: Void
  */
@@ -25,6 +26,7 @@ void cleanup(void)
 /**
  * sigintHandler - Handles the signal input
  * @signum: The signal message number
+ *
  *Return: Void
 */
 
@@ -37,6 +39,7 @@ void sigintHandler(int signum)
 
 /**
  * getInput - gets input from standard in
+ *
  * Return: Always returns string gotten
  */
 
@@ -80,7 +83,11 @@ int main(void)
 			continue;
 		}
 		if (!lineptr)
-			chck(lineptr, "lineptr");
+		{
+			_free(lineptr);
+			perror("getline");
+			return (1);
+		}
 		cmd = processToken(lineptr);
 		if (!cmd)
 		{
@@ -94,6 +101,7 @@ int main(void)
 		_free(lineptr);
 		lineptr = NULL;
 		free_cmds(cmd);
+		cmd = NULL;
 	}
 	cleanup();
 	return (0);

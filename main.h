@@ -40,7 +40,6 @@ char *_strncpy(char *dest, char *src, int n);
 
 char *getInput();
 int execute(char **args);
-void sigintHandler(int signum);
-void chck(char *, char *);
+void sighandler(int signum);
 
 #endif
